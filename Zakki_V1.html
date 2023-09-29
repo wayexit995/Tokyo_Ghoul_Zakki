@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <style>
+        :root {
+            --background-color-light: #f0f0f0;
+            --background-color-dark: #333;
+            --text-color-light: #000;
+            --text-color-dark: #fff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: var(--background-color-light);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .image-container {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100vh;
+            width: auto;
+            height: auto;
+            border: 2px solid var(--text-color-light);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        .navigation button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: var(--background-color-dark);
+            color: var(--text-color-dark);
+            border: none;
+            border-radius: 4px;
+        }
+
+        .navigation button:hover {
+            background-color: #555;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: var(--background-color-dark);
+                color: var(--text-color-dark);
+            }
+
+            .image-container img {
+                border: 2px solid var(--text-color-dark);
+            }
+
+            .navigation button {
+                background-color: var(--background-color-light);
+                color: var(--text-color-light);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img id="image" src="Images/001.jpg" alt="Image 001">
+    </div>
+
+    <div class="navigation">
+        <button id="prev">Previous</button>
+		<button id="prev" style="visibility: hidden"></button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        // JavaScript code here
+        const image = document.getElementById('image');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentImageIndex = 1;
+
+        function updateImage() {
+            const paddedIndex = String(currentImageIndex).padStart(3, '0');
+            image.src = `Images/${paddedIndex}.jpg`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentImageIndex = Math.max(1, currentImageIndex - 1);
+            updateImage();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentImageIndex = Math.min(85, currentImageIndex + 1);
+            updateImage();
+        });
+
+        updateImage();
+    </script>
+</body>
+</html>

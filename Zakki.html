@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokyo_Ghoul_Zakki</title>
+    <style>
+        :root {
+            --background-color-light: #A2B4DB;
+            --background-color-dark: #545C81;
+            --text-color-light: #fff;
+            --text-color-dark: #fff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: var(--background-color-light);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .image-container {
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100vh;
+            width: auto;
+            height: auto;
+            border: 2px solid var(--text-color-light);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin: 10px; /* Add some margin between images */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: var(--background-color-dark);
+                color: var(--text-color-dark);
+            }
+
+            .image-container img {
+                border: 2px solid var(--text-color-dark);
+            }
+        }
+    </style>
+</head>
+<body>
+</br>
+<h1>Zakki</h1>
+    <div class="image-container">
+        <!-- JavaScript will add images here -->
+    </div>
+<p><a href="https://github.com/wayexit995/Tokyo_Ghoul_Zakki" target="_blank">@29-09-2023</a></p>
+    <script>
+        // JavaScript code here
+        const imageContainer = document.querySelector('.image-container');
+        const totalImages = 85; // Set the total number of images you have
+
+        function createImageElement(index) {
+            const paddedIndex = String(index).padStart(3, '0');
+            const img = document.createElement('img');
+            img.src = `Images/${paddedIndex}.jpg`;
+            img.alt = `Image ${paddedIndex}`;
+            return img;
+        }
+
+        // Load and display all images
+        for (let i = 1; i <= totalImages; i++) {
+            const imageElement = createImageElement(i);
+            imageContainer.appendChild(imageElement);
+        }
+    </script>
+</body>
+</html>
